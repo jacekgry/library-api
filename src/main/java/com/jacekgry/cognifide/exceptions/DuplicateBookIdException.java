@@ -1,4 +1,4 @@
 package com.jacekgry.cognifide.exceptions;
 
-public class DuplicateBookIdException {
+public class DuplicateBookIdException extends Throwable {
 }
