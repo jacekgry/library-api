@@ -12,15 +12,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-public class JsonParser {
+public class JsonUtils {
 
     ObjectMapper mapper = new ObjectMapper();
 
     public Library encodeJson() {
 
-        System.out.println("inside encodeJson");
-
-        List<Book> books = new ArrayList<>(40);
         Library library = new Library();
         try {
             library = mapper.readerFor(Library.class).readValue(new ClassPathResource("static/books.json").getFile());

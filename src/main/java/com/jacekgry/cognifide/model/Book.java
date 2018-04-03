@@ -3,7 +3,7 @@ package com.jacekgry.cognifide.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.jacekgry.cognifide.utils.JsonParser;
+import com.jacekgry.cognifide.utils.JsonUtils;
 
 import java.util.*;
 
@@ -94,7 +94,7 @@ public class Book {
 
         Date date = null;
         try {
-            date = JsonParser.tryToParseDate((String) volumeInfo.get("publishedDate"));
+            date = JsonUtils.tryToParseDate((String) volumeInfo.get("publishedDate"));
             this.publishedDate = date.getTime();
         } catch (Exception e) {
         }

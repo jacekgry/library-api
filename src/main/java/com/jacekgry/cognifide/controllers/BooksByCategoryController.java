@@ -7,20 +7,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 @RestController
-public class BookByISBNController {
-
+public class BooksByCategoryController {
 
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("/api/book/{ISBN}")
-    public Book getBookByISBN(@PathVariable String ISBN) {
+    @RequestMapping("/api/category/{categoryName}/books")
+    public List<Book> getBooksByCategory(@PathVariable String categoryName){
+        return bookService.getBooksByCategory(categoryName);
 
-        return bookService.getBookByISBN(ISBN);
     }
-
-
-
 }

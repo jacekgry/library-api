@@ -1,5 +1,6 @@
 package com.jacekgry.cognifide.utils;
 
+import com.jacekgry.cognifide.model.Author;
 import com.jacekgry.cognifide.model.Book;
 
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.List;
 public class PseudoDB {
 
     private static List<Book> books;
-
     public static List<Book> getBooks() {
         return books;
     }
