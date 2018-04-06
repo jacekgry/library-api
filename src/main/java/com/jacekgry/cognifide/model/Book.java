@@ -25,6 +25,16 @@ public class Book {
     private List<String> authors;
     private List<String> categories;
 
+    public Book() {
+
+    }
+
+    public Book(String isbn, String title, Integer pageCount) {
+        this.isbn = isbn;
+        this.title = title;
+        this.pageCount = pageCount;
+    }
+
 
     public String getTitle() {
         return title;
