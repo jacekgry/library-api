@@ -35,6 +35,10 @@ public class Book {
         this.pageCount = pageCount;
     }
 
+    public Book(List<String> authors, Double averageRating) {
+        this.authors = authors;
+        this.averageRating = averageRating;
+    }
 
     public String getTitle() {
         return title;

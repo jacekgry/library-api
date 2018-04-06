@@ -8,10 +8,7 @@ import com.jacekgry.cognifide.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -36,7 +33,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Author> getAuthorsRating() {
-        Map<String, Author> authorsRating = new HashMap<>();
+        Map<String, Author> authorsRating = new LinkedHashMap<>();
         for (Book book : bookDAO.getAllBooks())
             if (book.getAuthors() != null) {
                 for (String authorName : book.getAuthors()) {
@@ -50,6 +47,6 @@ public class BookServiceImpl implements BookService {
                 }
             }
 
-        return new ArrayList<Author>(authorsRating.values());
+        return new ArrayList<>(authorsRating.values());
     }
 }

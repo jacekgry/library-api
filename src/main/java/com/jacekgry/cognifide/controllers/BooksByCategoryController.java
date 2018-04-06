@@ -16,7 +16,7 @@ public class BooksByCategoryController {
     private BookService bookService;
 
     @RequestMapping("/api/category/{categoryName}/books")
-    public List<Book> getBooksByCategory(@PathVariable String categoryName){
+    public List<Book> getBooksByCategory(@PathVariable String categoryName) {
         return bookService.getBooksByCategory(categoryName);
 
     }

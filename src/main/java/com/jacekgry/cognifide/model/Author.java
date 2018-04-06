@@ -17,6 +17,7 @@ public class Author {
 
     public Author(String authorName, Double firstRate) {
         this.name = authorName;
+        this.totalRating = firstRate;
         this.averageRating = firstRate;
         this.numOfRatedBooks = 1;
     }
@@ -31,6 +32,10 @@ public class Author {
 
     public int getNumOfRatedBooks() {
         return numOfRatedBooks;
+    }
+
+    public Double getTotalRating() {
+        return totalRating;
     }
 
     public void addRatedBook(Double rate) {

@@ -14,17 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @RunWith(SpringRunner.class)
@@ -41,10 +36,10 @@ public class BookByISBNControllerTest {
     private BookByISBNController bookByISBNController;
 
     @Before
-    public void setup(){
+    public void setup() {
         MockitoAnnotations.initMocks(this);
 
-        this.mockMvc = MockMvcBuilders.standaloneSetup(bookByISBNController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(bookByISBNController).setControllerAdvice(new ExceptionController()).build();
     }
 
     @Test
@@ -61,20 +56,12 @@ public class BookByISBNControllerTest {
                 .andExpect(jsonPath("$.title").value("Lord of the rings"))
                 .andExpect(jsonPath("$.pageCount").value(456));
 
-        mockMvc.perform(get("/api/book/nonexisting"))
-                .andExpect(status().isNotFound())
-                .andDo(MockMvcResultHandlers.print());
+
     }
 
-
-    @Test(expected = BookNotFoundException.class)
-    public void getNonExistingBookTest() throws Exception{
+    @Test
+    public void getNonExistingBookTest() throws Throwable {
         when(bookService.getBookByISBN("nonexisting")).thenThrow(new BookNotFoundException());
-
-        mockMvc.perform(get("/api/book/nonexisting"))
-                .andExpect(status().isNotFound())
-                .andDo(MockMvcResultHandlers.print());
+        mockMvc.perform(get("/api/book/nonexisting")).andExpect(status().isNotFound());
     }
-
-
 }

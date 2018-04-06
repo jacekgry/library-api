@@ -5,7 +5,7 @@ import com.jacekgry.cognifide.model.Book;
 
 import java.util.List;
 
-public class PseudoDB {
+public class DB {
 
     private static List<Book> books;
     public static List<Book> getBooks() {

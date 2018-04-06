@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface BookService {
 
-    public Book getBookByISBN(String ISBN);
+    Book getBookByISBN(String ISBN);
+
     List<Book> getBooksByCategory(String categoryName);
+
     List<Author> getAuthorsRating();
 }

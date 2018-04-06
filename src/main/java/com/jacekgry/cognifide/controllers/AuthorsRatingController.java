@@ -15,7 +15,7 @@ public class AuthorsRatingController {
     private BookService bookService;
 
     @RequestMapping("/api/rating")
-    public List<Author> getAuthorsRating(){
+    public List<Author> getAuthorsRating() {
         return bookService.getAuthorsRating();
     }
 
