@@ -1,4 +1,4 @@
-package com.jacekgry.cognifide;
+package com.jacekgry.library;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
